@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .hero {
+            background: url('https://images.unsplash.com/photo-1705822898715-369170f541cf?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA2fHxtb3ZpZXN8ZW58MHx8MHx8fDA%3D') center center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .search-form {
+            max-width: 250px;
+            width: 100%; 
+        }
+
+        .custom-input {
+            max-width: 400px;
+            padding: 6px 20px !important;  
+            font-size: 16px;
+            height: 48px;
+            border-radius: 12px;
+            border: 2px solid red;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px red; 
+            border-color: red; 
+        }
+
+        .modern-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #dee2e6;     
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+    
+        }
+
+        .modern-table th,
+        .modern-table td {
+            border: 1px solid #e0e0e0;     
+            background-color: white;
+        }
+
+        .modern-table thead th {
+            background-color: #343a40; 
+            color: white;
+            font-weight: 600;
+        }
+
+        .modern-table tbody tr:hover {
+            background-color: #f5f5f5;
+            transition: background-color 0.2s ease;
+        }
+
+        table td, table th {
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        .social-links {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;               
+            flex-wrap: wrap;
+            width: 100%;
+            z-index: 100;
+            padding: 16px 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;                
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .social-item img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .social-item:hover {
+            color: #007bff; 
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1 class="display-4 fw-bold text-danger text-uppercase">Movies Recommendation by Jordy</h1>
+        <h3 class="display-5 fw-bold">Your Next Favorite Movie Awaits!</h1>
+        <div class="search-box mt-4">
+            <form class= search-form action="{% url 'resultpage' %}" method="get">
+            <input type="text" name="film" class="form-control custom-input rounded-md" placeholder="Search Movie...">
+            </form>
+        </div>
+    </section>
+
+     <div class="container mt-2 mb-2">
+        <h2 class="text-center fw-bold mt-3 mb-3">Top Rated Movies</h2>
+        <div class="table-responsive d-flex justify-content-center">
+            <table class="table modern-table table-hover align-middle text-center" style="width: 85%; max-width: 600px; font-size: 0.9rem;" >
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Title</th>
+                        <th style="width: 10%;">Year</th>
+                        <th style="width: 20%;">Genre</th>
+                        <th style="width: 5%;">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for judul, rating, rilis, genres in top %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'resultpage' %}?film={{judul|urlencode}}" class="text-decoration-none text-danger fw-semibold">
+                                {{judul}}
+                            </a>
+                        </td>
+                        <td>{{rilis|slice:":4"}}</td>
+                        <td>{{genres|slice:":3"|join:", "|title}}</td>
+                        <td>⭐ {{rating}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="social-links">
+        <a href="https://github.com/jordyyusim" target="_blank" class="social-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            <span>@jordyyusim</span>
+        </a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+            <span>@jordyyusim</span>
+        </a>
+        <a href="https://x.com/yourusername" target="_blank" class="social-item">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/x.svg" alt="X (Twitter)" />
+            <span>@jordyyusim</span>
+        </a>
+    </footer>
+</body>
+</html>

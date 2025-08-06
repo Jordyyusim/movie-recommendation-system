@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Doesnt Exist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        padding-bottom: 200px; 
+    }
+    .bg {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        }   
+    
+    .home-button {
+        text-decoration: none;
+        margin-top: 16px;
+        margin-left: 60px;
+        font-size: 28px;
+        display: inline-block;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: flex-start;
+        gap: 40px;
+        flex-wrap: wrap;
+        height: 80px;
+        background: url('https://images.unsplash.com/photo-1705822898715-369170f541cf?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA2fHxtb3ZpZXN8ZW58MHx8MHx8fDA%3D') center center/cover no-repeat;
+    }
+    
+
+    .search-box {
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    .search-form {
+        max-width: 250px;
+        flex-shrink: 0;
+        width: 100%; 
+    }
+
+    .custom-input {
+        max-width: 400px;
+         
+        font-size: 16px;
+        height: 32px;
+        border-radius: 12px;
+        border: 2px solid red;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+
+    .custom-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); 
+        border-color: black; 
+    }
+
+    .footer-spacer {
+        height: 40px; 
+    }
+
+    .social-links {
+        position: fixed;
+        display: flex;
+        bottom: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 24px 0;
+        z-index: 100;
+        background-color: white; 
+    }
+
+    .social-item {
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        gap: 2px;                
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+        font-family: Helvetica;
+        font-size: 16px;
+        transition: color 0.2s ease;
+        }
+
+    .social-item img {
+        width: 22px;
+        height: 22px;
+        }
+
+    .social-item:hover {
+        color: #007bff; 
+        }
+    
+    .alert {
+        margin-top: 20px;
+        font-size: 28px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="content">
+            <div class="nav">
+                <a href="{% url 'homepage' %}" class="home-button fw-bold text-danger text-uppercase">Movies Recommendation by Jordy</a>
+                <div class="search-box mt-4">
+                    <form class= search-form action="{% url 'resultpage' %}" method="get">
+                        <input type="text" name="film" class="form-control custom-input rounded-md" placeholder="Search Movie...">
+                    </form>
+                </div>
+            </div>
+
+            <div class="alert alert-warning text-center fw-bold text-danger text-uppercase" role="alert">
+                {{ eror }}
+            </div>
+        </div>
+            
+        <div class="social-links">
+            <div class="footer-spacer"></div>
+            <a href="https://github.com/jordyyusim" target="_blank" class="social-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+                <span>@jordyyusim</span>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+                <span>@jordyyusim</span>
+            </a>
+            <a href="https://x.com/yourusername" target="_blank" class="social-item">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/x.svg" alt="X (Twitter)" />
+                <span>@jordyyusim</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
