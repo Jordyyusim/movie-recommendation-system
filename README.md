@@ -22,9 +22,9 @@ Built with **Python** and deployed as a web application using **Django**.
 
 ## 📸 Screenshots
 
-![1](screenshots/home.png)
-![2](screenshots/result.png)
-![3](screenshots/error.png)
+![1](movie-recommendation-system/screenshots/home.png)
+![2](movie-recommendation-system/screenshots/result.png)
+![3](movie-recommendation-system/screenshots/error.png)
 
 
 ## 🛠️ Built With
